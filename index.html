@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Page</title>
+    <style>
+        .faq {
+            margin-bottom: 20px;
+        }
+        .question {
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .answer {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>FAQ Page</h1>
+    <p>am i the only thing being extracted?</p>
+    <div id="faqContainer"></div>
+
+    <script>
+        window.onload = function() {
+            var faqContainer = document.getElementById('faqContainer');
+
+            // FAQ data
+            var faqs = [
+                {
+                    question: 'What is HTML?',
+                    answer: 'HTML stands for HyperText Markup Language. It is the standard markup language for creating web pages.'
+                },
+                {
+                    question: 'What is JavaScript?',
+                    answer: 'JavaScript is a programming language that allows you to add interactivity and dynamic content to web pages.'
+                },
+                {
+                    question: 'What is CSS?',
+                    answer: 'CSS stands for Cascading Style Sheets. It is used to style the appearance of web pages.'
+                }
+                // Add more FAQs here...
+            ];
+
+            // Add FAQs to the page
+            faqs.forEach(function(faq) {
+                var faqElement = document.createElement('div');
+                faqElement.classList.add('faq');
+
+                var questionElement = document.createElement('div');
+                questionElement.classList.add('question');
+                questionElement.textContent = faq.question;
+
+                var answerElement = document.createElement('div');
+                answerElement.classList.add('answer');
+                answerElement.textContent = faq.answer;
+
+                questionElement.addEventListener('click', function() {
+                    answerElement.style.display = answerElement.style.display === 'none' ? 'block' : 'none';
+                });
+
+                faqElement.appendChild(questionElement);
+                faqElement.appendChild(answerElement);
+
+                faqContainer.appendChild(faqElement);
+            });
+        };
+    </script>
+</body>
+</html>
